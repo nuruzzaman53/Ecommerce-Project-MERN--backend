@@ -1,11 +1,10 @@
-import queryString from 'query-string'
 const API ="http://localhost:8000/api" // backend server code //
 
 
 
 export const getProducts = (sortBy) => {
 
-    return fetch(`${API}/products?sortBy=${sortBy}&order=desc`,{  
+    return fetch(`${API}/products?sortBy=${sortBy}`,{  
       // ===== get all products  API ===== //
       method:'GET'
     })

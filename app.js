@@ -41,9 +41,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ecommerce
     console.log('Mongoose databse connection established')
 })
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'))
-}
+
 
 app.listen(port,() => {
     console.log(`Server Connected on port ${port}`)

@@ -5,7 +5,7 @@ const API ="http://localhost:8000/api" // backend server code //
 
 export const getProducts = (sortBy) => {
 
-    return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=12`,{  
+    return fetch(`${API}/products?sortBy=${sortBy}&order=desc`,{  
       // ===== get all products  API ===== //
       method:'GET'
     })

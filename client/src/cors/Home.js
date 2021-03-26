@@ -24,28 +24,22 @@ const Home = () => {
 
     const [error,setError] = useState(false)
 
-    const [loading,setLoading] = useState(false)
-
     const loadProductBySell = () => {
-        setLoading(true)
         getProducts('sold').then(data => {
             if(data.error) {
                 setError(data.error)
             } else {
                 setProductBySell(data)
-                setLoading(false)
             }
         })
     }
 
     const loadProductByArrival = () => {
-        setLoading(true)
         getProducts('createdAt').then(data => {
             if(data.error) {
                 setError(data.error)
             } else {
                 setProductByArrival(data)
-                setLoading(false)
             }
         })
     }
@@ -54,9 +48,7 @@ const Home = () => {
         loadProductByArrival()
     },[])
 
-    if(loading){
-        return <h2 className='text-center mt-10'>Loading ....</h2>
-    }
+  
 
     return(
 
@@ -65,7 +57,6 @@ const Home = () => {
 
             <h2 className='mb-4 text-left'> Our New Arrival Products <hr/></h2>
 
-            {loading}
 
             <Slider {...settings}>          
 
@@ -83,7 +74,6 @@ const Home = () => {
 
             <h2 className='mb-4 text-left'> Our Best Selling Products <hr/> </h2>
 
-            {loading}
             <Slider {...settings}>
 
                 {

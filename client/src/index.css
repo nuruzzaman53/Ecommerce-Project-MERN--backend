@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "Fakt Slab Pro Bnd";
+   src: url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.eot"); 
+   src: url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.eot?#iefix")
+    format("embedded-opentype"), 
+    url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.woff2") 
+    format("woff2"), url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.woff") 
+    format("woff"), url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.ttf") 
+    format("truetype"), 
+    url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.svg#Fakt Slab Pro Bnd") 
+    format("svg"); 
+  }
+
+
+
+/* ====== adding shadow at card & btn classs */
+.card {
+  box-shadow: 0px 2px 2px #eee ;
+}
+
+/* ===== adding animation on page load ==== 
+
+.container {
+  animation: myAnimation 0.9s;
+}
+*/
+@keyframes myAnimation {
+  from { opacity:0; transform: translateX(-5px); }
+  to   { opacity:1; transform: translateX(0); }
+}
+
+.custom_header {
+  background-color: #fbb034;
+  background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+}
+
+.main_menu .navbar .navbar-brand {
+  padding: 0 1rem 0 0
+} 
+
+.main_menu .navbar {
+  padding: 0rem 1rem;
+  text-transform: capitalize;
+}
+
+.main_menu .navbar ul li {
+  margin-left:14px
+}
+
+.color {
+  color: white;
+  text-shadow: 0px 1px 0px rgba(0,0,0,0.8) ;
+}
+
+.navbar .nav-item{
+  font-size: 17px;
+}
+
+h1,h2,h3,h4,h5{
+  font-family:  "Fakt Slab Pro Bnd";
+  letter-spacing: -.025em;
+}
+h1 {
+  font: 200 47px/.98em Fakt Slab Pro Bnd;
+  letter-spacing: -.031em;
+}
+
+
+.slick-arrow {
+  background-image: linear-gradient(-10deg, #643eee 0%, #ae00ff 74%);
+  width:30px;
+  height: 35px;
+  border-radius: 5px;
+}
+.slick-arrow:hover,.slick-arrow:active {
+  background-color: rgb(240, 18, 140);
+}

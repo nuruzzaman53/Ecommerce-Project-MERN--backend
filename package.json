@@ -1,0 +1,40 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "This is a fullstack ecommerce projects",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "build":"cd client && npm run build",
+    "install-client":"cd client && npm install",
+    "heroku-postbuild":"npm run install-client && npm run build",
+    "server": "nodemon app.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client \"  "
+  },
+  "author": "Nuruzzaman",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "braintree": "^3.2.1",
+    "concurrently": "^5.3.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "express-validator": "^5.3.1",
+    "formidable": "^1.2.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "mongoose": "^5.10.9",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.5",
+    "query-string": "^7.0.0",
+    "react-paginate": "^7.1.0",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
+    "uuid": "^8.3.1"
+  }
+}

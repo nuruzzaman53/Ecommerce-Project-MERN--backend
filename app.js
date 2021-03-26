@@ -42,7 +42,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ecommerce
 })
 
 if(process.env.NODE_ENV === 'production') {
-    app.use(exprees.static('client/build'))
+    app.use(express.static('client/build'))
 }
 
 app.listen(port,() => {

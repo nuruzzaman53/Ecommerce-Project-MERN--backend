@@ -1,5 +1,7 @@
 
-const API ="http://localhost:8000/api" // backend server code //
+//const API ="http://localhost:8000/api" // backend server code //
+
+const API = "https://mernappstore.herokuapp.com"
 
 export const createCategory = (userId,category,token) => {
     return fetch(`${API}/category/create/${userId}`,{  //===== create a new category ====== //

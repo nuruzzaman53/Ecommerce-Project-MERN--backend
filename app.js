@@ -34,7 +34,7 @@ app.use('/api',orderRoutes)
 
 const port = process.env.PORT || 8000
 
-mongoose.connect("mongodb+srv://nuruzzaman:nuruzzaman53@cluster0.wxew5.mongodb.net/ecommerce?retryWrites=true&w=majority",
+mongoose.connect("mongodb+srv://zaman:password1234@cluster0.wxew5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {useNewUrlParser:true},()=> {
     console.log('Mongoose databse connection established')
 })

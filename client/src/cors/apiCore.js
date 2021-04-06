@@ -1,5 +1,7 @@
 import queryString from 'query-string'
-const API ="http://localhost:8000/api" // backend server code //
+//const API ="http://localhost:8000/api" // backend server code //
+
+const API = "https://mernappstore.herokuapp.com/"
 
 export const getProducts = (sortBy) => {
 

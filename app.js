@@ -33,14 +33,15 @@ app.use('/api',braintreeRoutes)
 app.use('/api',orderRoutes)
 
 const port = process.env.PORT || 8000
-//db connection //
 
-//const db_name = process.env.DB_CONNECTION
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ecommerce',
+mongoose.connect("mongodb+srv://nuruzzaman:nuruzzaman53@cluster0.wxew5.mongodb.net/ecommerce?retryWrites=true&w=majority",
     {useNewUrlParser:true},()=> {
     console.log('Mongoose databse connection established')
 })
 
+/*mongoose.connect('mongodb://localhost:27017/ecommerce',{useNewUrlParser:true},() => {
+    console.log('Mongoose databse connection established')
+})*/
 
 
 app.listen(port,() => {

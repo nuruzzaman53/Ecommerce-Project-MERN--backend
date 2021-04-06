@@ -1,6 +1,5 @@
+import queryString from 'query-string'
 const API ="http://localhost:8000/api" // backend server code //
-
-
 
 export const getProducts = (sortBy) => {
 

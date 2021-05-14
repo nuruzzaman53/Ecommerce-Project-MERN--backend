@@ -60,3 +60,23 @@ exports.categoryValidator = (req,res,next) => {
     }
     next()
 }
+
+exports.feedbackValidator = (req,res,next) => {
+    
+    req.check('name','Name is required').notEmpty()
+    .isLength({max:100})
+    .withMessage('Name must be under 100 characters')
+
+    req.check('comment','Please type some comment').notEmpty()
+    .isLength({min:10,max:200})
+    .withMessage('Comment must be between 10 to 200 characters')
+
+    const errors = req.validationErrors()
+    if(errors){
+        const firstError = errors.map(error=>error.msg)[0]
+        return res.status(400).json({
+            error:firstError
+        })
+    }
+    next()
+}

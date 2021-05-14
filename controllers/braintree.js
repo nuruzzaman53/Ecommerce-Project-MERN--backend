@@ -29,8 +29,8 @@ exports.generateToken = (req,res) => {
 
 exports.processPayment = (req,res) => {
 
-    let nonceFromClient = req.body.paymentMethodNonce
-    let amountFromClient = req.body.amount
+    let nonceFromClient = req.body.paymentMethodNonce // client select which payment method //
+    let amountFromClient = req.body.amount         // total cost/amount of selected product such as $20//
     //charge //
 
     let newTransaction = gateway.transaction.sale({

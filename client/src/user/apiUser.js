@@ -1,7 +1,8 @@
-//const API ="http://localhost:8000/api" // backend server code //
+//const API ="http://localhost:8000/api" 
 
 
-const API = "https://mernappstore.herokuapp.com"
+const API = "https://mernappstore.herokuapp.com/api"
+
 export const getUser = (userId,token) => {
 
     return fetch(`${API}/user/${userId}`,{  

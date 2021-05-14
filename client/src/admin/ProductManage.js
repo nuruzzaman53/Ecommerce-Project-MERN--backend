@@ -6,8 +6,9 @@ import Layout from '../cors/Layout'
 import '../custom_bootstrap.css'
 import {listProducts,deleteProduct} from './ApiAdmin'
 import ReactPaginate from 'react-paginate'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const API ="http://localhost:8000/api" // backend server code //
+const API = "https://mernappstore.herokuapp.com/api"
 
 const AdminDashboard = () => {
 
@@ -91,7 +92,7 @@ const AdminDashboard = () => {
 
                     <tr key={i}>
 
-                      <td><img src={`${API}/product/photo/${p._id}`} width='80px' /> </td>
+                      <td><LazyLoadImage src={`${API}/product/photo/${p._id}`} width='50px' /> </td>
 
                       <td>{p.name} </td>
 

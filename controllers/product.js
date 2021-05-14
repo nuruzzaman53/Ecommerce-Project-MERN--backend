@@ -49,7 +49,7 @@ exports.create = (req,res) => {
                 })
             }
 
-           product.photo.data = fs.readFileSync(files.photo.path)
+           product.photo.data = fs.readFileSync(files.photo.path) // fs.readFileSync( path, options ) //
            product.photo.contentType = files.photo.type
        } 
        product.save((err,result) => {

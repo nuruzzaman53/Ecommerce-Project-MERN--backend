@@ -18,20 +18,20 @@
   box-shadow: 0px 2px 2px #eee ;
 }
 
-/* ===== adding animation on page load ==== 
+/* ===== adding animation on page load ====
 
-.container {
+.container-fluid {
   animation: myAnimation 0.9s;
 }
-*/
+*/ 
 @keyframes myAnimation {
   from { opacity:0; transform: translateX(-5px); }
   to   { opacity:1; transform: translateX(0); }
 }
 
 .custom_header {
-  background-color: #fbb034;
-  background-image: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+  background-color: rgb(7, 7, 7);
+  color:white;
 }
 
 .main_menu .navbar .navbar-brand {
@@ -44,7 +44,8 @@
 }
 
 .main_menu .navbar ul li {
-  margin-left:14px
+  margin-left:14px;
+
 }
 
 .color {
@@ -64,8 +65,6 @@ h1 {
   font: 200 47px/.98em Fakt Slab Pro Bnd;
   letter-spacing: -.031em;
 }
-
-
 .slick-arrow {
   background-image: linear-gradient(-10deg, #643eee 0%, #ae00ff 74%);
   width:30px;
@@ -75,3 +74,17 @@ h1 {
 .slick-arrow:hover,.slick-arrow:active {
   background-color: rgb(240, 18, 140);
 }
+
+.top-header {
+  background-color:rgba(242, 251, 255,0.4);
+  border-bottom: 1px solid lightgray;
+}
+label {
+  font-size: 18px;
+}
+input[type='checkbox'] {
+  padding: 8px;
+}
+
+
+

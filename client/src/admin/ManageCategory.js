@@ -6,7 +6,6 @@ import '../custom_bootstrap.css'
 import {getCategories,deleteCategory} from './ApiAdmin'
 import moment from 'moment'
 
-const API ="http://localhost:8000/api" // backend server code //
 
 const ManageCategory = () => {
 
@@ -82,12 +81,12 @@ const ManageCategory = () => {
                       <td>{moment(c.updatedAt).fromNow()} </td>
 
                       <td><Link to={`/admin/category/update/${c._id}`} >
-                          <i className='fa fa-pencil' style={{cursor:'pointer',textAlign:'center'}}></i>
+                          <i className='fa fa-pencil text-success' style={{cursor:'pointer',textAlign:'center'}}></i>
                           </Link>
                           </td>
 
                       <td><span onClick={()=> destroyCategory(c._id)}>
-                      <i className='fa fa-times-circle' style={{cursor:'pointer',textAlign:'center'}}></i>
+                      <i className='fa fa-times-circle text-danger' style={{cursor:'pointer',textAlign:'center'}}></i>
                       </span>
                       </td>
 

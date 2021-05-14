@@ -3,7 +3,6 @@ import Layout from './Layout'
 import Card from './Card'
 import '../custom_bootstrap.css'
 import { getProducts } from './apiCore'
-import ProductSlider from './ProductSlider'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";

@@ -42,7 +42,7 @@ const AddCategory = () => {
             <div className='form-group'>
                 <label>Name</label>
                 <input type='text' 
-                className='form-control col-10' 
+                className='form-control col-8' 
                 value={name}
                 autoFocus 
                 onChange={changeHandler} 
@@ -76,14 +76,14 @@ const AddCategory = () => {
       }
     
     const showError = () => (
-        <div className='alert alert-danger col-10' style = {{ display: error ? '' : 'none'}}>
+        <div className='alert alert-danger col-8' style = {{ display: error ? '' : 'none'}}>
                <i className='fa fa-window-close'></i> {error}
        </div>   
      )
 
     const showSuccess = () => {
         if(success) {
-        return <div className='alert alert-primary col-10'>
+        return <div className='alert alert-success col-8'>
 
               <i className='fa fa-check-square'></i>  {name} is created      
            </div>

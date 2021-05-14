@@ -50,19 +50,19 @@ const Signup = () => {
             <div className='form-group'>
               <label>Name</label>
               <input onChange = {handleChange('name')} type='text' value={name}  
-              className='form-control col-10' />
+              className='form-control col-8' />
             </div>
 
             <div className='form-group'>
               <label >Email</label>
               <input onChange = {handleChange('email')} type='email' value={email} 
-              className='form-control col-10' />
+              className='form-control col-8' />
             </div>
 
             <div className='form-group'>
               <label >Password</label>
               <input onChange = {handleChange('password')} type='password'value={password} 
-              className='form-control col-10' />
+              className='form-control col-8' />
             </div> <br/>
 
             <button  onClick={clickSubmit } className='btn btn-primary'> 
@@ -73,13 +73,13 @@ const Signup = () => {
       )
 
       const showError = () => (
-        <div className='alert alert-danger col-10' style={{ display: error ? '' : 'none'}}>
+        <div className='alert alert-danger col-8' style={{ display: error ? '' : 'none'}}>
           <i className='fa fa-window-close'></i> {error}
         </div>
       )
 
       const showSuccess =() => (
-        <div className='alert alert-info col-10' style={{ display: success ? '' : 'none'}}>
+        <div className='alert alert-success col-8' style={{ display: success ? '' : 'none'}}>
           <i className='fa fa-check-square'></i> New Account is created .Please 
          <Link to='/signin'> <i className="fa fa-sign-in"></i> Sign in</Link>
       </div>

@@ -15,7 +15,7 @@ const categoryRoutes   = require('./routes/category')
 const productRoutes    = require('./routes/product')
 const braintreeRoutes  = require('./routes/braintree')
 const orderRoutes      = require('./routes/order')
-
+const feedbackRoutes   = require('./routes/feedback')
 
 // middleware calling//
 app.use(morgan('dev'))
@@ -31,6 +31,7 @@ app.use('/api',categoryRoutes)
 app.use('/api',productRoutes)
 app.use('/api',braintreeRoutes)
 app.use('/api',orderRoutes)
+app.use('/api',feedbackRoutes)
 
 const port = process.env.PORT || 3001
 

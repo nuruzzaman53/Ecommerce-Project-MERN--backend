@@ -1,12 +1,13 @@
 import React from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
-const API ="http://localhost:8000/api" // backend server code //
+const API = "https://mernappstore.herokuapp.com/api"
 
 const ShowPhoto = ({item}) => {
 
    return( <div className='product-img'>
 
-        <img  src={`${API}/product/photo/${item._id}`} 
+        <LazyLoadImage  src={`${API}/product/photo/${item._id}`} 
         
         className='card-img-top mb-3'
         

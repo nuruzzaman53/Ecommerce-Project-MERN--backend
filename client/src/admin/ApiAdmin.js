@@ -1,7 +1,7 @@
 
-//const API ="http://localhost:8000/api" // backend server code //
+//const API ="http://localhost:8000/api" 
 
-const API = "https://mernappstore.herokuapp.com"
+const API = "https://mernappstore.herokuapp.com/api"
 
 export const createCategory = (userId,category,token) => {
     return fetch(`${API}/category/create/${userId}`,{  //===== create a new category ====== //
@@ -76,7 +76,7 @@ export const updateCategory = (userId,token,categoryId,category) => {
       Accept:'application/json',
       Authorization:`Bearer ${token}` 
     },
-    body: JSON.stringify({category})
+    body: category
   })
   .then(response => { return response.json()})
   .catch(err => {console.log(err)} )
@@ -174,4 +174,19 @@ export const updateProduct = (userId,token,productId,product) => {
   })
   .then(response => { return response.json()})
   .catch(err => {console.log(err)} )
+}
+
+
+export const createFeedback = (userId,feedback,token) => {
+  return fetch(`${API}/feedback/create/${userId}`,{ 
+      method: 'POST',
+      headers: { 
+        Accept:'application/json',
+        Authorization:`Bearer ${token}`
+      },
+      body: feedback
+    })
+    .then(response => { return response.json() })
+    .catch(err => { console.log(err) })
+
 }

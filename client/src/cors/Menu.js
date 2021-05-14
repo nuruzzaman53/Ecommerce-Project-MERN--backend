@@ -7,9 +7,9 @@ import { itemTotal } from './cartHelper'
 
 const isActive =(history,path) => {
     if(history.location.pathname === path) {
-        return { color: 'indigo',fontWeight:'bold'}
+        return { color: 'tomato',fontWeight:'bold'}
     } else {
-        return { color: '#000000'}
+        return { color: 'white'}
     }
 }
 
@@ -18,10 +18,12 @@ const Menu = ({history}) =>(
 
     <div className='main_menu'>
         
-        <nav class="navbar navbar-expand-lg navbar-light custom_header">
-        <Link class="navbar-brand text-primary" to="/"><h2 className='my-1'><b>Dream E-Shop </b></h2></Link>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-light custom_header">
+        <Link className="navbar-brand text-white" to="/"><h2 className='my-1'><b>Zaman's Store </b></h2></Link>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -79,7 +81,7 @@ const Menu = ({history}) =>(
                     <li className='nav-item'>
                         <span 
                             onClick={()=> signout(() => { history.push('/') })} 
-                            style={{cursor:'pointer',color:'black'}} 
+                            style={{cursor:'pointer',color:'white'}} 
                             className='nav-link' 
                             > Signout
                         </span>

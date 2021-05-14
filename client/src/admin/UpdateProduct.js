@@ -198,23 +198,6 @@ const UpdateProduct = ({match}) => {
       loading && (<div className='alert alert-success'><h3>Loading......</h3></div>)
    )
 
-   const adminLinks = () => {
-    return (
-      <div className='mb-2'>
-      <h2>Admin Links</h2>
-        <ul className='list-group'>
-          <Link className='list-group-item' to='/create/category'><i className="fa fa-chevron-circle-right" ></i> Create Category</Link>
-          <Link className='list-group-item active' to='/create/product'><i className="fa fa-chevron-circle-right" ></i> Create Product</Link>
-          <Link className='list-group-item' to='/admin/orders'><i className="fa fa-chevron-circle-right" ></i> View Orders</Link>
-          <Link className='list-group-item' to='/admin/manageProduct'>
-                  <i className="fa fa-chevron-circle-right" ></i> Manage Products
-          </Link>
-        </ul>
-
-    </div>
-    )
-  }
-
     
     return(
         
@@ -226,7 +209,6 @@ const UpdateProduct = ({match}) => {
           <div className='row justify-content-center'>
 
             <div className='col-3'>
-            
             </div>
 
               <div className='col-7'>

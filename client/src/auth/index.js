@@ -1,5 +1,5 @@
 
-const API = "http://localhost:8000/api" // backend url //
+const API = "https://mernappstore.herokuapp.com/api"
 
 export const signup = user => {
     return fetch(`${API}/signup`,{ // send request at backend export.signup method //

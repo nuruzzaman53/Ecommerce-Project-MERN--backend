@@ -48,7 +48,7 @@ const AddProduct = () => {
 
 
     useEffect(() => {
-       return init()
+      return init()
     },[])
 
     const changeHandler = name => event => {
@@ -173,7 +173,7 @@ const AddProduct = () => {
 
    const showLoading = () => (
 
-      loading && (<div className='alert alert-success'><h3>Loading......</h3></div>)
+      loading && (<div className='alert alert-success'><h6>Loading......</h6></div>)
    )
 
    const adminLinks = () => {

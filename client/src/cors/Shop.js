@@ -6,7 +6,7 @@ import '../custom_bootstrap.css'
 import RadioBox from './RadioBox'
 import {prices} from './fixedPrices'
 import Card from './Card'
-import Search from './Search'
+
 
 const Shop = () => {
 
@@ -43,29 +43,6 @@ const Shop = () => {
                 setSkip(0)
             }
         })
-    }
-
-    const loadMore = () => {
-        let toSkip = limit + skip
-        getFilteredProducts(toSkip,limit,myFilters.filters).then(data => {
-            if (data.error) {
-                setError(data.error)
-            } else {
-                setFilteredResults([...filteredResults,...data.data])
-                setSize(data.size)
-                setSkip(0)
-            }
-        })
-    }
-
-    const loadMoreButton = () => {
-        return(
-            size >0 && size >= limit &&(
-            <button className='btn btn-primary' onClick={loadMore}>
-                Load More Books
-            </button>
-            
-        ))
     }
 
     useEffect(() => {
@@ -134,7 +111,7 @@ const Shop = () => {
 
                     <div className='col-9'>
 
-                        <h2 className='mb-4'> <Search /></h2>
+                        
 
                         <div className='row'>
 

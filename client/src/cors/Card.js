@@ -99,7 +99,7 @@ const Card = ({
 
                     <ShowPhoto item={product} />
 
-                   <h4 className='card-title'> {product.name}  </h4> 
+                   <h5 className='card-title'> {product.name}  </h5> 
 
                     <h5>${product.price} {stockView(product.quantity)} </h5> 
 

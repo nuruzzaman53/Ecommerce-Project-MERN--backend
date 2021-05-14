@@ -29,6 +29,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.5",
     "query-string": "^7.0.0",
+    "react-lazy-load-image-component": "^1.5.1",
     "react-paginate": "^7.1.0",
     "react-slick": "^0.28.1",
     "slick-carousel": "^1.8.1",

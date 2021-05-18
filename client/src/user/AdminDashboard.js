@@ -19,7 +19,6 @@ const AdminDashboard = () => {
           <Link className='list-group-item' to='/admin/manageProduct'>
             <i className="fa fa-angle-double-right" ></i> Manage Products </Link>
             <Link className='list-group-item' to='/admin/manageCategory'><i className="fa fa-angle-double-right" ></i> Manage Category</Link>
-            <Link className='list-group-item' to='/admin/addFeedback'><i className="fa fa-angle-double-right" ></i> Add Feedback</Link>
         </ul>
 
     </div>

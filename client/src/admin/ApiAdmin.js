@@ -175,18 +175,3 @@ export const updateProduct = (userId,token,productId,product) => {
   .then(response => { return response.json()})
   .catch(err => {console.log(err)} )
 }
-
-
-export const createFeedback = (userId,feedback,token) => {
-  return fetch(`${API}/feedback/create/${userId}`,{ 
-      method: 'POST',
-      headers: { 
-        Accept:'application/json',
-        Authorization:`Bearer ${token}`
-      },
-      body: feedback
-    })
-    .then(response => { return response.json() })
-    .catch(err => { console.log(err) })
-
-}

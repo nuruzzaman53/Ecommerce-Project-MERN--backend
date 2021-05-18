@@ -111,7 +111,6 @@ const Shop = () => {
 
                     <div className='col-9'>
 
-                        
 
                         <div className='row'>
 

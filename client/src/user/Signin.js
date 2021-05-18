@@ -3,6 +3,9 @@ import {Redirect} from 'react-router-dom'
 import Layout from '../cors/Layout'
 import '../custom_bootstrap.css'
 import {authenticate, signin,isAuthenticated} from '../auth/index'
+import GoogleLogin from 'react-google-login';
+
+const API = "https://mernappstore.herokuapp.com/api"
 
 const Signin = () => {
 
@@ -61,6 +64,35 @@ const Signin = () => {
 
           </form>
       )
+      
+      const successGoogle = (response) => {
+        fetch(`${API}/google_login`,{
+          method:'POST',
+          data:response.data
+        })
+        console.log(response)     
+      }
+
+      const failureGoogle = (response) => {
+        console.log(response)
+      }
+
+      const googleLogin = () => (
+
+        <div className='row'>
+          <div className='col-8 mt-5'>
+            <GoogleLogin
+              clientId="947436172889-4dkuapda7fen61a3o7pulk2virqkct2o.apps.googleusercontent.com"
+              buttonText="Login with Google "
+              onSuccess={successGoogle}
+              onFailure={failureGoogle}
+              cookiePolicy={'single_host_origin'}
+              className="btn btn-block text-primary text-capitalize"
+          />
+          </div>
+        </div>
+
+      )
 
       const showError = () => (
         <div className='alert alert-danger col-8' style={{ display: error ? '' : 'none'}}>
@@ -94,14 +126,15 @@ const Signin = () => {
 
           <div className='row justify-content-center'>
 
-          <div className='col-8 offset-2 mt-5'>
+            <div className='col-8 offset-2 mt-2'>
 
-              {showLoading()}
-              {showError()}
-              {signUpForm()}
-              {redirectUser()}
+                {showLoading()}
+                {showError()}
+                {signUpForm()}
+                {googleLogin()}
+                {redirectUser()}
 
-            </div>
+              </div>
 
           </div>
 

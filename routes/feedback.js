@@ -10,7 +10,7 @@ const {userById} = require('../controllers/user')
 
 const { createFeedback } = require('../controllers/feedback')
 
-/* router.get('/feedback',feedbackList) */
+router.get('/feedback',feedbackList) 
 
 router.post('/feedback/create/:userId',requireSignin,isAuth,isAdmin,createFeedback)
 

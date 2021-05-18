@@ -189,3 +189,12 @@ export const addFeedback = (userId,feedback,token) => {
     .catch(err => { console.log(err) })
 
 } // ======= ending createFeedback ========= //
+
+export const getFeedbacks = () => {
+  return fetch(`${API}/feedback`,{  // ===== get all categories API ===== //
+    method:'GET'
+  })
+  .then(response => { return response.json()})
+  .catch(err => {console.log(err)} )
+
+} //====== ending getCategories ======//

@@ -8,7 +8,7 @@ const {isAuth,isAdmin,requireSignin} = require('../controllers/auth')
 const {userById} = require('../controllers/user')
 
 
-const { createFeedback } = require('../controllers/feedback')
+const { createFeedback,feedbackList } = require('../controllers/feedback')
 
 router.get('/feedback',feedbackList) 
 

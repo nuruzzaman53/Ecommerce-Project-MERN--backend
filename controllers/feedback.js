@@ -57,6 +57,16 @@ exports.feedbackById = (req,res,next,id) => {
 exports.readFeedback = (req,res) => {
     return res.json(req.feedback)
 }
+exports.feedbackList = (req,res) => {
+    Feedback.find().exec((err,data) => {
+        if(err){
+            return res.status(400).json({
+                err
+            })
+        }
+        res.json(data)
+    })
+}
 exports.removeFeedback = (req,res) => {
     let feedback = req.feedback
     feedback.remove((error,feedback) => {

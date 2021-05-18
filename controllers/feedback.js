@@ -12,8 +12,8 @@ exports.createFeedback = (req,res) => {
                 error:'Image could not be uploaded'
             })
         }
-       const {name,comment} = fields
-        if(!name || !comment) {
+       const {name,photo,comment} = fields
+        if(!name || !comment || !photo) {
             return res.status(400).json({
                 error:'All fields are required'
             })

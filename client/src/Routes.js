@@ -18,6 +18,7 @@ import ProductManage from './admin/ProductManage'
 import UpdateProduct from './admin/UpdateProduct'
 import ManageCategory from './admin/ManageCategory'
 import UpdateCategory from './admin/UpdateCategory'
+import AddFeedback from './admin/AddFeedback'
 
 
 const Routes = () => {
@@ -34,6 +35,7 @@ const Routes = () => {
             <AdminRoute path ='/admin/orders' exact component={Orders} />
             <AdminRoute path ='/create/category/' exact component={AddCategory} />
             <AdminRoute path ='/create/product/' exact component={AddProduct} />
+            <AdminRoute path ='/create/feedback/' exact component={AddFeedback} />
             <Route path='/product/:productId' exact component={Product} />
             <Route path='/cart' exact component={Cart}/>
             <PrivateRoute path ='/profile/:userId' exact component={Profile} />

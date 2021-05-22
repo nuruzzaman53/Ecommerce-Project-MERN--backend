@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 
 const feedbackSchema  = new mongoose.Schema({
 
-    name:    { type:String, required:true},
+    name: { type: String, required:true },
 
-    photo:   { data:Buffer,contentType:String},
+    photo:{ data: Buffer,contentType: String },
 
-    comment: { type:String, required:true },
+    comment:{ type: String, required: true,maxlength: 200 }
 
 },
     { timestamps:true}

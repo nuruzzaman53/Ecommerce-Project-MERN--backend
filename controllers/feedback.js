@@ -12,17 +12,8 @@ exports.createFeedback = (req,res) => {
                 error:'Image could not be uploaded'
             })
         }
-       const {name,photo,comment} = fields
-        if(!name || !comment || !photo) {
-            return res.status(400).json({
-                error:'All fields are required'
-            })
-        }
 
        let feedback = new Feedback(fields)
-
-       // 1kb = 1000b
-       // 1mb = 1,000,000 b
        if(files.photo) {
             if(files.photo.size > 1000000) {
                 return res.status(400).json({
@@ -112,7 +103,7 @@ exports.updateFeedback = (req,res) => {
 exports.showFeedbackImage = (req,res,next) => {
     if(req.feedback.photo.data){
         res.set('Content-Type',req.feedback.photo.contentType)
-        return res.send(req.product.photo.data)
+        return res.json(req.product.photo.data)
     }
     next()
 }

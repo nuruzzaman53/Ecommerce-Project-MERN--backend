@@ -9,7 +9,7 @@ const client = new OAuth2Client("947436172889-4dkuapda7fen61a3o7pulk2virqkct2o.a
 
  exports.googleLogin  =(req,res) => {
      const {tokenId} = req.body
-     client.verifyIdToken({tokenId,audience:"947436172889-4dkuapda7fen61a3o7pulk2virqkct2o.apps.googleusercontent.com"})
+     client.verifyIdToken({Idtoken:tokenId,audience:"947436172889-4dkuapda7fen61a3o7pulk2virqkct2o.apps.googleusercontent.com"})
      .then(response => {
          const {email_verified,name,email} = response.payload
          console.log(response.payload)

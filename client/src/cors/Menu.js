@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react'
 import { Link,withRouter } from 'react-router-dom'
 import {isAuthenticated, signout} from '../auth/index'
-import { itemTotal } from './cartHelper'
+import { likeTotal,itemTotal } from './cartHelper'
 
 //const {user} = isAuthenticated()
 
 const isActive =(history,path) => {
     if(history.location.pathname === path) {
-        return { color: 'tomato',fontWeight:'bold'}
+        return { color: '#2603BF',fontWeight:'bold',textTransform:'capitalize'}
     } else {
-        return { color: 'white'}
+        return { color: 'black',textTransform:'capitalize'}
     }
 }
 
@@ -19,7 +19,7 @@ const Menu = ({history}) =>(
     <div className='main_menu'>
         
         <nav className="navbar navbar-expand-lg navbar-light custom_header">
-        <Link className="navbar-brand text-white" to="/"><h2 className='my-1'><b>Zaman's Store </b></h2></Link>
+        <Link className="navbar-brand text-primary" to="/"><h2 className='my-1'><b>Zaman's Store </b></h2></Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" 
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
             aria-expanded="false" aria-label="Toggle navigation">
@@ -47,10 +47,26 @@ const Menu = ({history}) =>(
 
 
         <li className='nav-item'>
+                <Link to='/favourite' style={isActive(history,'/favourite')} className='nav-link' >
+                  <i className="fa fa-heart"></i> 
+                   <span className='badge badge-danger'>{likeTotal()}</span>
+                    
+                </Link>
+
+        </li>
+
+        <li className='nav-item'>
                 <Link to='/cart' style={isActive(history,'/cart')} className='nav-link' >
                   <i className="fa fa-cart-plus"></i> 
                    <span className='badge badge-danger'>{itemTotal()}</span>
                     
+                </Link>
+
+        </li>
+
+        <li className='nav-item'>
+                <Link to='/contact' style={isActive(history,'/contact')} className='nav-link' >
+                  <i className="fa fa-cart-plus"></i> Contact Us  
                 </Link>
 
         </li>
@@ -67,12 +83,7 @@ const Menu = ({history}) =>(
 
                     </li>
 
-                    <li className='nav-item'>
-                        <Link to='/signup' style={isActive(history,'/signup')} className='nav-link' >
-                            <i className="fa fa-user-plus" ></i> Signup
-                        </Link>
 
-                    </li>
 
                 </Fragment>
         )}
@@ -81,7 +92,7 @@ const Menu = ({history}) =>(
                     <li className='nav-item'>
                         <span 
                             onClick={()=> signout(() => { history.push('/') })} 
-                            style={{cursor:'pointer',color:'white'}} 
+                            style={{cursor:'pointer',color:'black',textTransform:'capitalize'}} 
                             className='nav-link' 
                             > Signout
                         </span>

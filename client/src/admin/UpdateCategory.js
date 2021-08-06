@@ -1,50 +1,64 @@
 import React,{useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import { isAuthenticated } from '../auth'
+import { API } from '../config'
 import Layout from '../cors/Layout'
 import { singleCategory,updateCategory } from './ApiAdmin'
 
 const AddCategory = ({match}) => {
 
-    const [name,setName]       = useState('')
-    const [error,setError]     = useState(false)
-    const [success,setSuccess] = useState(false)
+    const [values,setValues] = useState({
+        name:'',
+        photo:'',
+        error:'',
+        success:''
+    })
 
-    // destructure user & token from local storage //
     const {user,token} = isAuthenticated()
 
-    const changeHandler = e => {
-       setError('')
-       setName(e.target.value)
-    }
+    const userId = user._id
+
+    const userToken = token
+
+    const {name,photo,error,success} = values //object destructing //
+
+    const categoryId = match.params.categoryId
 
     const initCategories = (categoryId) => {
         singleCategory(categoryId).then(data => {
             if(data.error){
-                setError(data.error)
-                console.log(data.error)
+                setValues({ ...values, error: data.error })
             } else {
-                setName(data.name)
+                setValues({ ...values,name:data.name})
             }
         })
     }
 
     useEffect(() => {
-        initCategories(match.params.categoryId)
+        initCategories(categoryId)
     },[])
 
     const clickSubmit = e => {
         e.preventDefault()
-        setError('')
-        setSuccess(false)
-        updateCategory(user._id,token,match.params.categoryId,name).then(data => {
-            if(data.error){
-                setError(data.error)
-                console.log(data.error)
-            } else {
-                setSuccess(true)
-            }
+        setValues({...values,error:'',success:''})
+
+        const formData = new FormData()
+        formData.append('name',name)
+        formData.append('photo',photo)
+
+        let result = fetch(`${API}/category/${categoryId}/${userId}`,{
+            method:'PUT',
+            headers:{
+                Authorization:`Bearer ${userToken}`,
+                Accept:'application/json'
+            },
+            body:formData
         })
+        if(result) {
+            setValues({...values,success:true})
+        } else {
+            alert('Category Updating failed')
+        }
     }
 
     const newCategoryForm = () =>(
@@ -55,11 +69,15 @@ const AddCategory = ({match}) => {
 
             <div className='form-group'>
                 <label>Name</label>
-                <input type='text' 
-                className='form-control col-8' 
-                value={name}
-                autoFocus 
-                onChange={changeHandler} 
+                <input type='text' className='form-control col-8' value={name}
+                autoFocus onChange={(e) => setValues({...values,name:e.target.value})} 
+                />
+            </div>
+
+            <div className='form-group'>
+                <label>Category Photo</label>
+                <input type='file' name='photo' accept='image/*' className='form-control col-8'
+                 onChange={(e) => { setValues({...values, photo:e.target.file })}} 
                 />
             </div>
 
@@ -96,7 +114,7 @@ const AddCategory = ({match}) => {
     
     return(
         
-        <Layout className='container-fluid mt-5' >
+        <Layout className='container mt-5' >
 
           <div className='row justify-content-center '>
 
@@ -104,7 +122,7 @@ const AddCategory = ({match}) => {
   
               </div>
 
-              <div className='col-7'>
+              <div className='col-9'>
                 {showError()}
                 {showSuccess()}
                 {newCategoryForm()}

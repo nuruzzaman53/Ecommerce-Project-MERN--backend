@@ -62,9 +62,8 @@ exports.categoryValidator = (req,res,next) => {
 }
 
 exports.feedbackValidator = (req,res,next) => {
-    
     req.check('name','Name is required').notEmpty()
-    .isLength({max:100})
+    .isLength({ max:100 })
     .withMessage('Name must be under 100 characters')
 
     req.check('comment','Please type some comment').notEmpty()
@@ -78,5 +77,23 @@ exports.feedbackValidator = (req,res,next) => {
             error:firstError
         })
     }
+    next()
+}
+
+exports.mailValidator = (req,res,next) => {
+
+    req.check('name','Name is Required').notEmpty()
+    req.check('email','Email is required').notEmpty()
+    req.check('comment','Comment is required').notEmpty()
+
+    const errors = req.validationErrors()
+
+    if(errors){
+        const firstError = errors.map(error => error.msg)[0]
+        return res.status(400).json({
+            error: firstError
+        })
+    }
+    
     next()
 }

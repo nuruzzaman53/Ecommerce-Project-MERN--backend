@@ -4,11 +4,15 @@ const router = express.Router()
 
 const { requireSignin,isAuth,isAdmin} = require('../controllers/auth')
 
-const { userById,read,update, googleLogin, purchaseHistory } = require('../controllers/user')
+const { mailValidator } = require('../validator/index')
+
+const { userById,read,update,mailSend,googleLogin,purchaseHistory } = require('../controllers/user')
 
  /* Google login */
 
-router.post('/google_login',googleLogin)
+router.post('/googleLogin',googleLogin)
+
+router.post('/mail',mailSend)
 
 /* regular user login */
 

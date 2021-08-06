@@ -1,10 +1,14 @@
 
-const API = "https://mernappstore.herokuapp.com/api"
+import {API} from '../config'
+
 
 export const signup = user => {
     return fetch(`${API}/signup`,{ // send request at backend export.signup method //
         method: 'POST',
-        headers: { Accept:'application/json','Content-Type':'application/json'},
+        headers: {
+          Accept:'application/json',
+          'Content-Type':'application/json'
+        },
         body: JSON.stringify(user) 
         // JSON.Stringify method convert any javascript object into string //
       })

@@ -1,22 +1,29 @@
-@font-face {
-  font-family: "Fakt Slab Pro Bnd";
-   src: url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.eot"); 
-   src: url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.eot?#iefix")
-    format("embedded-opentype"), 
-    url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.woff2") 
-    format("woff2"), url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.woff") 
-    format("woff"), url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.ttf") 
-    format("truetype"), 
-    url("//db.onlinewebfonts.com/t/5acb9b52defe0607878e6d75978cce4a.svg#Fakt Slab Pro Bnd") 
-    format("svg"); 
-  }
 
-
-
-/* ====== adding shadow at card & btn classs */
-.card {
-  box-shadow: 0px 2px 2px #eee ;
+body {
+  background-color: rgb(251, 251, 251);
 }
+/* ====== adding shadow at card & btn class */
+
+.card {
+  border-radius: 0px;
+  box-shadow: 0 1px 2px rgba(81, 12, 172, 0.2);
+}
+
+.product_card {
+  padding:8px;
+  transform: scale(0.95);
+  align-items: center;
+  text-align: center;
+  border:1px solid rgb(187, 186, 186);
+  border-radius: 10px;
+  background: rgb(255, 255, 255);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+}
+
+.product_card:hover{
+  transform: scale(1.0);
+  box-shadow: 0 4px 8px rgba(81, 12, 172, 0.6);
+} 
 
 /* ===== adding animation on page load ====
 
@@ -30,8 +37,17 @@
 }
 
 .custom_header {
-  background-color: rgb(7, 7, 7);
-  color:white;
+  background-color: rgb(255, 255, 255);
+  color:black;
+  box-shadow: 0 1px 2px rgb(14, 13, 13,0.2);
+}
+
+.custom_signin {
+background-color: rgb(255, 255, 255);
+border-radius: 10px;
+width:400px;
+padding: 30px;
+box-shadow:0 16px 40px rgba(0,0,0,0.12);border:0;
 }
 
 .main_menu .navbar .navbar-brand {
@@ -47,9 +63,13 @@
   margin-left:14px;
 
 }
+.list-group-item:link {
+  text-decoration: none;
+}
+
 
 .color {
-  color: white;
+  color: rgb(10, 10, 10);
   text-shadow: 0px 1px 0px rgba(0,0,0,0.8) ;
 }
 
@@ -57,22 +77,19 @@
   font-size: 17px;
 }
 
-h1,h2,h3,h4,h5{
-  font-family:  "Fakt Slab Pro Bnd";
-  letter-spacing: -.025em;
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Bebas Neue';
+  letter-spacing: 0.5px;
 }
-h1 {
-  font: 200 47px/.98em Fakt Slab Pro Bnd;
-  letter-spacing: -.031em;
-}
+
 .slick-arrow {
-  background-image: linear-gradient(-10deg, #643eee 0%, #ae00ff 74%);
+  background-color:#0525B5;
   width:30px;
   height: 35px;
   border-radius: 5px;
 }
 .slick-arrow:hover,.slick-arrow:active {
-  background-color: rgb(240, 18, 140);
+  background-color: #0835FF;
 }
 
 .top-header {
@@ -86,5 +103,40 @@ input[type='checkbox'] {
   padding: 8px;
 }
 
+/* styling table */
 
+table {
+  border-collapse: collapse;
+  overflow: hidden;/* border-radius will only works for overflow property*/
+  -webkit-box-shadow: 0px 1px 1px #000;
+  -moz-box-shadow: 0px 1px 1px #000;
+  box-shadow: 0px 2px 1px #000;
+  text-align: center;
+  border-radius: 5px 5px 0px;
+}
+th,td {
+  border: none;
+  padding: 20px;
+}
+th {
+  padding:10px;
+  color: rgb(255, 255, 255);
+  background-color: #07689F;
+  text-transform: uppercase;
+ 
+}
+tr:hover {
+  background-color: #ddd;
+  color:rgb(8, 130, 201);
+}
+tr:nth-child(odd) {
+  background-color: #f2f2f2
+}
+
+.cart-border {
+  border:1px solid rgb(226, 226, 226);
+  border-radius: 10px;
+  padding:15px;
+  background-color: white;
+}
 

@@ -1,18 +1,19 @@
 
 const User = require('../models/user')
+const nodemailer = require('nodemailer')
 const {Order} = require('../models/order')
 const {OAuth2Client} = require('google-auth-library');
 
 const client = new OAuth2Client("947436172889-4dkuapda7fen61a3o7pulk2virqkct2o.apps.googleusercontent.com")
 
- // Googlev login //
-
  exports.googleLogin  =(req,res) => {
      const {tokenId} = req.body
-     client.verifyIdToken({Idtoken:tokenId,audience:"947436172889-4dkuapda7fen61a3o7pulk2virqkct2o.apps.googleusercontent.com"})
-     .then(response => {
+     client.verifyIdToken({ 
+        idToken: tokenId,
+        audience:"947436172889-4dkuapda7fen61a3o7pulk2virqkct2o.apps.googleusercontent.com"
+    }).then(response => {
          const {email_verified,name,email} = response.payload
-         console.log(response.payload)
+         console.log("response accepted",response.payload)
      })
  }
 
@@ -92,5 +93,41 @@ exports.purchaseHistory = (req,res) => {
         }
         res.json(orders)
     })
+}
+
+exports.mailSend = (req,res) => {
+
+    let data = req.body
+    let smtpTransport = nodemailer.createTransport({
+        service:'Gmail',
+        port: 587,
+        secure: false,
+        auth: {
+            user:'fornodeapp@gmail.com',
+            pass:'me0905053'
+        }
+    })
+
+    let mailOptions = {
+        from : data.email,
+        to : 'fornodeapp@gmail.com',
+        subject:`Message from ${data.name}`,
+        html : `
+            <h2> Welcome to Zaman's Store </h2>
+                <h3> Name: ${data.name}</h3>
+                <h4> Email: ${data.email}</h4>
+                <p> Comment: ${data.comment}</p>
+
+        `
+    }
+
+    smtpTransport.sendMail(mailOptions,(err,response) => {
+        if(error) { 
+            return res.send({err}) 
+        }
+       res.send(response)
+    })
+
+    smtpTransport.close()
 }
 

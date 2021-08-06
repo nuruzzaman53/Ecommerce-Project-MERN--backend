@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import { isAuthenticated } from '../auth'
-import '../custom_bootstrap.css'
 import Layout from '../cors/Layout'
 import {Link} from 'react-router-dom'
 import {createProduct,getCategories} from './ApiAdmin'
@@ -180,16 +179,29 @@ const AddProduct = () => {
     return (
       <div className='mb-2'>
       <h2>Admin Links</h2>
-        <ul className='list-group'>
-          <Link className='list-group-item' to='/create/category'><i className="fa fa-angle-double-right" ></i> Create Category</Link>
-          <Link className='list-group-item active' to='/create/product'><i className="fa fa-angle-double-right" ></i> Create Product</Link>
-          <Link className='list-group-item' to='/admin/orders'><i className="fa fa-angle-double-right" ></i> View Orders</Link>
-          <Link className='list-group-item' to='/admin/manageProduct'>
-                  <i className="fa fa-angle-double-right" ></i> Manage Products
+      <ul className='list-group'>
+          <Link className='list-group-item' to='/create/category'>
+            <i className="fa fa-angle-double-right" ></i> Create Category
           </Link>
-          <Link className='list-group-item' to='/admin/manageCategory'><i className="fa fa-angle-double-right" ></i> Manage Category</Link>
+          <Link className='list-group-item active' to='/create/product'>
+            <i className="fa fa-angle-double-right" ></i> Create Product
+          </Link>
+          <Link className='list-group-item' to='/admin/orders'>
+            <i className="fa fa-angle-double-right" ></i> View Orders
+          </Link>
+          <Link className='list-group-item' to='/admin/manageProduct'>
+            <i className="fa fa-angle-double-right" ></i> Manage Products 
+          </Link>
+          <Link className='list-group-item' to='/admin/manageCategory'>
+            <i className="fa fa-angle-double-right" ></i> Manage Category
+          </Link>
+          <Link className='list-group-item ' to='/create/feedback'>
+            <i className="fa fa-angle-double-right" ></i> Create Feedback
+          </Link>
+          <Link className='list-group-item ' to='/admin/manageFeedback'>
+            <i className="fa fa-angle-double-right" ></i> Manage Feedback
+          </Link>
         </ul>
-
     </div>
     )
   }
@@ -199,16 +211,16 @@ const AddProduct = () => {
         
         <Layout title='Create a New Product' 
                 description={`G'day   ${user.name},is ready to create any Product`} 
-                className='container-fluid'
+                className='container'
         >
 
-          <div className='row justify-content-center'>
+          <div className='row'>
 
             <div className='col-3'>
             {adminLinks()}
             </div>
 
-              <div className='col-7'>
+              <div className='col-9'>
                 {showLoading()}
                 {showSuccess()}
                 {showError()}

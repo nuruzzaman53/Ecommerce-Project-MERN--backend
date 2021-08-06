@@ -3,12 +3,11 @@ import React, { useState,useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import { isAuthenticated } from '../auth'
 import Layout from '../cors/Layout'
-import '../custom_bootstrap.css'
 import {listProducts,deleteProduct} from './ApiAdmin'
 import ReactPaginate from 'react-paginate'
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import {API} from '../config'
 
-const API = "https://mernappstore.herokuapp.com/api"
 
 const AdminDashboard = () => {
 
@@ -52,14 +51,28 @@ const AdminDashboard = () => {
     return (
       <div className='mb-2'>
       <h2>Admin Links</h2>
-        <ul className='list-group'>
-          <Link className='list-group-item' to='/create/category'><i className="fa fa-angle-double-right" ></i> Create Category</Link>
-          <Link className='list-group-item' to='/create/product'><i className="fa fa-angle-double-right" ></i> Create Product</Link>
-          <Link className='list-group-item' to='/admin/orders'><i className="fa fa-angle-double-right" ></i> View Orders</Link>
+      <ul className='list-group'>
+          <Link className='list-group-item' to='/create/category'>
+            <i className="fa fa-angle-double-right" ></i> Create Category
+          </Link>
+          <Link className='list-group-item' to='/create/product'>
+            <i className="fa fa-angle-double-right" ></i> Create Product
+          </Link>
+          <Link className='list-group-item' to='/admin/orders'>
+            <i className="fa fa-angle-double-right" ></i> View Orders
+          </Link>
           <Link className='list-group-item active' to='/admin/manageProduct'>
-            <i className="fa fa-angle-double-right" ></i> Manage Products</Link>
-          <Link className='list-group-item ' to='/admin/manageCategory'>
-            <i className="fa fa-angle-double-right" ></i> Manage Category</Link>
+            <i className="fa fa-angle-double-right" ></i> Manage Products 
+          </Link>
+          <Link className='list-group-item' to='/admin/manageCategory'>
+            <i className="fa fa-angle-double-right" ></i> Manage Category
+          </Link>
+          <Link className='list-group-item ' to='/create/feedback'>
+            <i className="fa fa-angle-double-right" ></i> Create Feedback
+          </Link>
+          <Link className='list-group-item ' to='/admin/manageFeedback'>
+            <i className="fa fa-angle-double-right" ></i> Manage Feedback
+          </Link>
         </ul>
 
     </div>
@@ -92,7 +105,7 @@ const AdminDashboard = () => {
 
                     <tr key={i}>
 
-                      <td><LazyLoadImage src={`${API}/product/photo/${p._id}`} width='50px' /> </td>
+                      <td><LazyLoadImage src={`${API}/product/photo/${p._id}`} width='50px' className='img-thumbnail' /> </td>
 
                       <td>{p.name} </td>
 
@@ -109,7 +122,7 @@ const AdminDashboard = () => {
                       </Link></td>
 
                       <td><span onClick={()=> destroyProduct(p._id)} >
-                        <i className='fa fa-times-circle' style={{cursor:'pointer',textAlign:'center'}}></i>
+                        <i className='fa fa-times-circle text-danger' style={{cursor:'pointer',textAlign:'center'}}></i>
                       </span>
                       </td>
                     </tr>
@@ -131,15 +144,15 @@ const AdminDashboard = () => {
     return(
         
 
-            <Layout  className='container-fluid'>
+            <Layout  className='container'>
 
-              <div className='row justify-content-center'>
+              <div className='row'>
 
                   <div className='col-3'>
                       {adminLinks()}
                   </div>
 
-                  <div className='col-7'>
+                  <div className='col-9'>
 
                     <ReactPaginate 
                       previousLabel={'Previous'}

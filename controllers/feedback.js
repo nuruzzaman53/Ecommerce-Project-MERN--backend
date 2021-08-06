@@ -4,8 +4,11 @@ const fs = require('fs')
 const Feedback = require('../models/feedback')
 
 exports.createFeedback = (req,res) => {
+
     let form = new formidable.IncomingForm()
+    form.uploadDir = './uploads'
     form.keepExtensions = true
+    form.multiple = false
     form.parse(req,(err,fields,files) => {
         if(err) {
             return res.status(400).json({
@@ -71,7 +74,9 @@ exports.removeFeedback = (req,res) => {
 }
 exports.updateFeedback = (req,res) => {
     let form = new formidable.IncomingForm()
+    form.uploadDir = './uploads'
     form.keepExtensions = true
+    form.multiple = false
     form.parse(req,(error,files,fields) => {
         if(error) {
             return res.status(500).json({
@@ -103,7 +108,7 @@ exports.updateFeedback = (req,res) => {
 exports.showFeedbackImage = (req,res,next) => {
     if(req.feedback.photo.data){
         res.set('Content-Type',req.feedback.photo.contentType)
-        return res.json(req.product.photo.data)
+        return res.send(req.feedback.photo.data)
     }
     next()
 }

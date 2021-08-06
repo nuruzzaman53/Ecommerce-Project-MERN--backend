@@ -2,7 +2,6 @@ const express          = require('express')
 const mongoose         = require('mongoose')
 require('dotenv').config()
 const morgan           = require('morgan')
-const bodyParser       = require('body-parser')
 const cookieParser     = require('cookie-parser')
 const expressValidator = require('express-validator')
 const app              = express()
@@ -18,10 +17,11 @@ const orderRoutes      = require('./routes/order')
 const feedbackRoutes   = require('./routes/feedback')
 
 // middleware calling//
-app.use(morgan('dev'))
-app.use(bodyParser.json())
-app.use(cookieParser())
 app.use(expressValidator())
+app.use(morgan('dev'))
+app.use(express.json())
+app.use(express.urlencoded({ extended:true }))
+app.use(cookieParser())
 app.use(cors())
 
 // middleware use //
@@ -39,8 +39,8 @@ mongoose.connect("mongodb+srv://zaman:password1234@cluster0.wxew5.mongodb.net/ec
     {useNewUrlParser:true},()=> {
     console.log('Mongoose databse connection established')
 })
-
-/*mongoose.connect('mongodb://localhost:27017/ecommerce',{useNewUrlParser:true},() => {
+/*
+mongoose.connect('mongodb://localhost:27017/ecommerce',{useNewUrlParser:true},() => {
     console.log('Mongoose databse connection established')
 })*/
 

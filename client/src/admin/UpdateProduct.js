@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react'
 import { isAuthenticated } from '../auth'
-import '../custom_bootstrap.css'
 import Layout from '../cors/Layout'
 import {Link} from 'react-router-dom'
 import {singleProduct,getCategories,updateProduct} from './ApiAdmin'
@@ -203,7 +202,7 @@ const UpdateProduct = ({match}) => {
         
         <Layout title='Create a New Product' 
                 description={`G'day   ${user.name},is ready to create any Product`} 
-                className='container-fluid'
+                className='container'
         >
 
           <div className='row justify-content-center'>
@@ -211,7 +210,7 @@ const UpdateProduct = ({match}) => {
             <div className='col-3'>
             </div>
 
-              <div className='col-7'>
+              <div className='col-9'>
                 {showLoading()}
                 {showSuccess()}
                 {showError()}

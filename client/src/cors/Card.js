@@ -1,15 +1,15 @@
 import React,{useState} from 'react'
 import {Link,Redirect} from 'react-router-dom'
 import ShowPhoto from './ShowPhoto'
-import moment from 'moment'
-import {addItem,updateItem,removeItem} from './cartHelper'
+import {addItem,updateItem,removeItem,addLike} from './cartHelper'
 
 const Card = ({
-        product,
-        showViewProductButton = true,
-        showAddToCartButton= true,
-        cartUpdate = false,
-        showRemoveButton = false
+    product,
+    showViewProductButton = true,
+    showAddToCartButton= true,
+    cartUpdate = false,
+    showRemoveButton = false,
+    showLikeButton = true
     }) => {
 
     const[redirect,setRedirect] = useState(false)
@@ -28,7 +28,7 @@ const Card = ({
     const showRemoveProduct = showRemoveButton => {
         return(
             showRemoveButton && (
-                <button onClick={()=> removeItem(product._id)} className='btn btn-outline-danger ml-4 mt-2 mb-2'>
+                <button onClick={()=> removeItem(product._id)} className='btn btn-danger ml-4 mt-2 mb-2'>
                 <i className="fa fa-trash"></i> Remove Product</button>
             )
         )
@@ -36,10 +36,15 @@ const Card = ({
 
     const addToCart = () => {
         addItem(product,()=> {
-            setRedirect(true)
+            setRedirect(false)
         })
     }
-
+    
+    const addToLike = () => {
+        addLike(product,() => {
+            setRedirect(false)
+        })
+    }
     const shouldRedirect = (redirect) => {
         if(redirect) {
             return <Redirect to='/shop' />
@@ -52,11 +57,22 @@ const Card = ({
         return(
             showAddToCartButton && (
 
-            <button onClick={addToCart} className='btn btn-primary mt-2 mb-2 ml-2'>
+            <Link onClick={addToCart} className='text-primary ml-5'>
                         
-            <i className="fa fa-shopping-basket" ></i> + Cart
+            <h5><i className="fa fa-shopping-basket" ></i> </h5>
         
-            </button> 
+            </Link> 
+        ))
+    }
+
+    const showLike = showLikeButton => {
+
+        return(
+            showLikeButton && (
+
+            <Link onClick={addToLike}>
+                <h5 className='text-secondary ml-3'><i class="fa fa-heart"></i></h5>
+            </Link>
         ))
     }
 
@@ -70,7 +86,7 @@ const Card = ({
     const showCartUpdateOptions= cartUpdate => {
         return cartUpdate && (
             <div className='input-group mb-3'>
-                <div className='input-group-prepand'>
+                <div className='input-group'>
                     <span className='input-group-text'> Adjust quantity</span>
                 </div>
              <input type='number' 
@@ -86,40 +102,31 @@ const Card = ({
 
     const stockView = (quantity) => {
         return quantity >0 ? 
-        <h5 className='badge badge-info'> In Stock  </h5> : 
+        <h5 className='btn btn-outline-primary'> In Stock  </h5> : 
         <h5 className='badge badge-danger'> Out Of Stock </h5>
     }
 
         return(
 
-            <div>
-                
-                <div>
+            <div className='justify-content-center'>
+            
+                <div className='product_card'>
+
                     {shouldRedirect(redirect)}
-
-                    <ShowPhoto item={product} />
-
-                   <h5 className='card-title'> {product.name}  </h5> 
-
-                    <h5>${product.price} {stockView(product.quantity)} </h5> 
-
-                    <Link to={`/product/${product._id}`}>
-
-                            {showView(showViewProductButton)}
-
-                    </Link>  
-
-                    {showAddToCart(showAddToCartButton)} 
+                    <Link to={`/product/${product._id}`}><ShowPhoto item={product} style={{width:"80%"}}/></Link>  
+                    <h5 className='card-title'> {product.name}  </h5>
+                    <div className="btn-group" role="group">
+                       <h5> ${product.price}</h5> 
+                       {showAddToCart(showAddToCartButton)}
+                       {showLike(showLikeButton)}
+                       
+                    </div>
 
                     {showRemoveProduct(showRemoveButton)} <br/>
 
                     {showCartUpdateOptions(cartUpdate)}
-                  
-                    
-                </div>  
-
-
-                    
+        
+                </div>                  
             </div>
         )
 }

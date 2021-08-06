@@ -1,13 +1,9 @@
+import {API} from '../config'
 import queryString from 'query-string'
-
-//const API ="http://localhost:8000/api"//
-
-const API = "https://mernappstore.herokuapp.com/api"
 
 export const getProducts = (sortBy) => {
 
     return fetch(`${API}/products?sortBy=${sortBy}`,{  
-      // ===== get all products  API ===== //
       method:'GET'
     })
     .then(response => { return response.json()})
@@ -15,7 +11,6 @@ export const getProducts = (sortBy) => {
   
   } //====== ending All Product List ======//
 
-  
 
   export const getFilteredProducts = (skip,limit,filters = {} ) => {
     const data =  {skip,limit,filters}
@@ -32,10 +27,8 @@ export const getProducts = (sortBy) => {
   
   } // ======= ending getFiltered Products ========= /////
 
-
-
   export const getCategories = () => {
-    return  fetch(`${API}/categories`,{  // ===== get all categories API ===== //
+    return  fetch(`${API}/categories`,{  
       method:'GET'
     })
     .then(response => { return response.json()})
@@ -45,23 +38,23 @@ export const getProducts = (sortBy) => {
 
 
   export const read = (productId) => {
-    return  fetch(`${API}/product/${productId}`,{  // ===== get all products API ===== //
+    return  fetch(`${API}/product/${productId}`,{  
       method:'GET'
     })
     .then(response => { return response.json()})
     .catch(err => {console.log(err)} )
   
-  } //====== ending getCategories ======//
+  } //====== ending getProducts ======//
 
 
   export const relatedProductList = (productId) => {
-    return  fetch(`${API}/products/related/${productId}`,{  // ===== get related product API ===== //
+    return  fetch(`${API}/products/related/${productId}`,{  
       method:'GET'
     })
     .then(response => { return response.json()})
     .catch(err => {console.log(err)} )
   
-  } //====== ending getCategories ======//
+  } //====== ending related Product ======//
 
 
   // ===== start Braintree Client token method ==== ///

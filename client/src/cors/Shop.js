@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import Layout from './Layout'
 import { getCategories,getFilteredProducts } from './apiCore'
 import Checkbox from './Checkbox'
-import '../custom_bootstrap.css'
 import RadioBox from './RadioBox'
 import {prices} from './fixedPrices'
 import Card from './Card'
@@ -77,58 +76,32 @@ const Shop = () => {
 
     return(
 
-        <Layout title='Shop' description='Purchase your favourite books from here'
-
-         className='container-fluid'>
+        <Layout className='container-fluid'>
 
             <div className='row'>
                 
-                    <div className='col-3'>
-
-                        <h4>Filter By Categories</h4><hr/>
-
-                        <ul>
-
-                         <Checkbox  categories={categories} 
-
-                         handleFilter={ filters => handleFilter(filters,'category')} />
-
+                    <div className='col-2'>
+                        <h4>Filter By Categories</h4>
+                        <ul> <Checkbox  categories={categories} 
+                             handleFilter={ filters => handleFilter(filters,'category')} />
                        </ul>
 
-                       <h4>Filter By Prices</h4> <hr/>
-
-                        <div>
-
-                          <RadioBox  prices={prices} 
-
+                       <h4>Filter By Prices</h4>
+                        <div> <RadioBox  prices={prices} 
                            handleFilter={ filters => handleFilter(filters,'price')} 
-
-                          />
-
+                        />
                        </div>
 
                     </div>
 
-                    <div className='col-9'>
-
-
+                    <div className='col-10'>
                         <div className='row'>
-
                             {filteredResults.map((product,i) =>(
-
-                             <div className='col-3 mb-3'>
-
+                             <div className='col-2 mb-3'>
                                 <Card  key={i} product={product} />
-
                             </div>
-
-
                             ))}
                         </div>
-
-                         <hr/>     
-
-                    
                     </div>
 
             </div>

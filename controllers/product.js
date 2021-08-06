@@ -24,6 +24,7 @@ exports.read   = (req,res) =>   {
 exports.create = (req,res) => {
 
     let form = new formidable.IncomingForm()
+    form.uploadDir='./uploads'
     form.keepExtensions = true
     form.parse(req,(err,fields,files) => {
         if(err) {
@@ -80,6 +81,7 @@ exports.remove = (req,res) => {
 exports.update = (req,res) => {
 
     let form = new formidable.IncomingForm()
+    form.uploadDir='./uploads'
     form.keepExtensions = true
     form.parse(req,(err,fields,files) => {
         if(err) {

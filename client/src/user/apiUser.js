@@ -1,7 +1,4 @@
-//const API ="http://localhost:8000/api" 
-
-
-const API = "https://mernappstore.herokuapp.com/api"
+import { API } from '../config'
 
 export const getUser = (userId,token) => {
 

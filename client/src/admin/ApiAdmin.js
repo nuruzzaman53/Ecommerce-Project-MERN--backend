@@ -1,17 +1,13 @@
-
-//const API ="http://localhost:8000/api" 
-
-const API = "https://mernappstore.herokuapp.com/api"
+import {API} from '../config'
 
 export const createCategory = (userId,category,token) => {
     return fetch(`${API}/category/create/${userId}`,{  //===== create a new category ====== //
         method: 'POST',
         headers: { 
           Accept:'application/json',
-          'Content-Type':'application/json',
           Authorization:`Bearer ${token}` // token required for authorization //
         },
-        body: JSON.stringify(category) 
+        body: category
       })
       .then(response => { return response.json() })
       .catch(err => { console.log(err) })
@@ -53,7 +49,6 @@ export const singleCategory = (categoryId) => {
   .catch(err => {console.log(err)} )
 }
 
-
 export const deleteCategory = (userId,token,categoryId) => {
   return fetch(`${API}/category/${categoryId}/${userId}`,{  // ===== get all categories API ===== //
     method:'DELETE',
@@ -68,21 +63,20 @@ export const deleteCategory = (userId,token,categoryId) => {
 
 } //====== ending getCategories ======//
 
-
 export const updateCategory = (userId,token,categoryId,category) => {
   return fetch(`${API}/category/${categoryId}/${userId}`,{  
     method:'PUT',
     headers: { 
       Accept:'application/json',
+      'Content-Type':'application/json',
       Authorization:`Bearer ${token}` 
     },
-    body: category
+    body: JSON.stringify(category)
   })
   .then(response => { return response.json()})
   .catch(err => {console.log(err)} )
 
 } 
-
 
 export const listOrders = (userId,token) => {
   return fetch(`${API}/order/list/${userId}`,{  // ===== get all categories API ===== //
@@ -176,7 +170,7 @@ export const updateProduct = (userId,token,productId,product) => {
   .catch(err => {console.log(err)} )
 }
 
-export const addFeedback = (userId,feedback,token) => {
+export const feedbackAdd = (userId,token,feedback) => {
   return fetch(`${API}/feedback/create/${userId}`,{ 
       method: 'POST',
       headers: { 
@@ -191,10 +185,44 @@ export const addFeedback = (userId,feedback,token) => {
 } // ======= ending createFeedback ========= //
 
 export const getFeedbacks = () => {
-  return fetch(`${API}/feedback`,{  // ===== get all categories API ===== //
+  return fetch(`${API}/feedback`,{  // ===== get all Feedback API ===== //
     method:'GET'
   })
   .then(response => { return response.json()})
   .catch(err => {console.log(err)} )
 
 } //====== ending getCategories ======//
+
+export const FeedbackDelete = (feedbackId,userId,token) => {
+  return fetch(`${API}/feedback/${feedbackId}/${userId}`,{
+    method:'DELETE',
+    headers: {
+       Accept:'application/json',
+       'Content-Type':'application/json',
+       Authorization:`Bearer ${token}`}
+  })
+  .then(response => { return response.json() } )
+  .catch(err => console.log(err))
+}
+
+export const FeedbackUpdate= (feedbackId,userId,token) => {
+  return fetch(`${API}/feedback/${feedbackId}/${userId}`,{
+    method:'PUT',
+    headers: {
+       Accept:'application/json',
+       Authorization:`Bearer ${token}`}
+  })
+  .then(response => { return response.json() } )
+  .catch(err => console.log(err))
+}
+
+export const singleFeedback = (feedbackId) => {
+  return fetch(`${API}/feedback/${feedbackId}`,{
+    method:'GET',
+    headers: {
+      Accept:'application/json'
+    }
+  })
+  .then(response => { return response.json() })
+  .catch(err => console.log(err))
+}

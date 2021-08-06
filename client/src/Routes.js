@@ -20,7 +20,9 @@ import ManageCategory from './admin/ManageCategory'
 import UpdateCategory from './admin/UpdateCategory'
 import AddFeedback from './admin/AddFeedback'
 import ManageFeedback from './admin/ManageFeedback'
-
+import UpdateFeedback from './admin/UpdateFeedback'
+import Contact from './cors/Contact'
+import Like from './cors/Favourite'
 
 const Routes = () => {
 
@@ -29,8 +31,10 @@ const Routes = () => {
         <Switch>
             <Route path='/' exact component={Home}/>
             <Route path='/shop' exact component={Shop}/>
+            <Route path='/favourite' exact component={Like}/>
             <Route path='/signin' exact component={Signin}/>
             <Route path='/signup' exact component={Signup}/>
+            <Route path='/contact' exact component={Contact} />
             <PrivateRoute path ='/user/dashboard' exact component={Dashboard} />
             <AdminRoute path ='/admin/dashboard' exact component={AdminDashboard} />
             <AdminRoute path ='/admin/orders' exact component={Orders} />
@@ -45,6 +49,7 @@ const Routes = () => {
             <AdminRoute path ='/admin/manageCategory' exact component={ManageCategory} />
             <AdminRoute path ='/admin/product/update/:productId' exact component={UpdateProduct} />
             <AdminRoute path ='/admin/category/update/:categoryId' exact component={UpdateCategory} />
+            <AdminRoute path='/admin/feedback/update/:feedbackId' exact component={UpdateFeedback} />
         </Switch>
     
     </BrowserRouter>

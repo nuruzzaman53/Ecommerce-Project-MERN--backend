@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import {Link} from 'react-router-dom'
 import Layout from '../cors/Layout'
 import {signup} from '../auth/index'
-import '../custom_bootstrap.css'
 
 const Signup = () => {
 
@@ -43,26 +42,23 @@ const Signup = () => {
   }
       const signUpForm = () => (
 
-          <form>
+          <form className='custom_signin mt-5' >
 
-            <h2>Sign Up Form</h2> <br/>
+            <h2>Create a New Account</h2> <br/>
 
             <div className='form-group'>
-              <label>Name</label>
               <input onChange = {handleChange('name')} type='text' value={name}  
-              className='form-control col-8' />
+              className='form-control col-11' placeholder='Your Name' />
             </div>
 
             <div className='form-group'>
-              <label >Email</label>
               <input onChange = {handleChange('email')} type='email' value={email} 
-              className='form-control col-8' />
+              className='form-control col-11' placeholder='Your Email ID' />
             </div>
 
             <div className='form-group'>
-              <label >Password</label>
               <input onChange = {handleChange('password')} type='password'value={password} 
-              className='form-control col-8' />
+              className='form-control col-11' placeholder='Please type a strong password' />
             </div> <br/>
 
             <button  onClick={clickSubmit } className='btn btn-primary'> 
@@ -85,6 +81,12 @@ const Signup = () => {
       </div>
       )
 
+      const showSigin = () => (
+        <div className='mt-5 ml-2'>
+            <p>Already have an acount ? please <Link to='/signin'>Login your account</Link></p>
+        </div>
+      )
+
       return(
 
           <Layout title='Sign up' 
@@ -93,11 +95,12 @@ const Signup = () => {
           >
             <div className='row justify-content-center'>
 
-            <div className='col-8 offset-2 mt-5'>
+            <div className='col-7 offset-2 mt-5'>
 
               {showError()}
               {showSuccess()}
               {signUpForm()}
+              {showSigin()}
 
               </div>
 

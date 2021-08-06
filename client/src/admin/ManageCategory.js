@@ -2,9 +2,10 @@ import React, { useState,useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import { isAuthenticated } from '../auth'
 import Layout from '../cors/Layout'
-import '../custom_bootstrap.css'
 import {getCategories,deleteCategory} from './ApiAdmin'
 import moment from 'moment'
+import {API} from '../config'
+import {LazyLoadImage} from 'react-lazy-load-image-component'
 
 
 const ManageCategory = () => {
@@ -39,12 +40,28 @@ const ManageCategory = () => {
     return (
       <div className='mb-2'>
       <h2>Admin Links</h2>
-        <ul className='list-group'>
-          <Link className='list-group-item' to='/create/category'><i className="fa fa-angle-double-right" ></i> Create Category</Link>
-          <Link className='list-group-item' to='/create/product'><i className="fa fa-angle-double-right" ></i> Create Product</Link>
-          <Link className='list-group-item' to='/admin/orders'><i className="fa fa-angle-double-right" ></i> View Orders</Link>
-          <Link className='list-group-item' to='/admin/manageProduct'><i className="fa fa-angle-double-right" ></i> Manage Products</Link>
-          <Link className='list-group-item active' to='/admin/manageCategory'><i className="fa fa-angle-double-right" ></i> Manage Category</Link>
+      <ul className='list-group'>
+          <Link className='list-group-item' to='/create/category'>
+            <i className="fa fa-angle-double-right" ></i> Create Category
+          </Link>
+          <Link className='list-group-item' to='/create/product'>
+            <i className="fa fa-angle-double-right" ></i> Create Product
+          </Link>
+          <Link className='list-group-item' to='/admin/orders'>
+            <i className="fa fa-angle-double-right" ></i> View Orders
+          </Link>
+          <Link className='list-group-item ' to='/admin/manageProduct'>
+            <i className="fa fa-angle-double-right" ></i> Manage Products 
+          </Link>
+          <Link className='list-group-item active' to='/admin/manageCategory'>
+            <i className="fa fa-angle-double-right" ></i> Manage Category
+          </Link>
+          <Link className='list-group-item ' to='/create/feedback'>
+            <i className="fa fa-angle-double-right" ></i> Create Feedback
+          </Link>
+          <Link className='list-group-item ' to='/admin/manageFeedback'>
+            <i className="fa fa-angle-double-right" ></i> Manage Feedback
+          </Link>
         </ul>
 
     </div>
@@ -61,11 +78,12 @@ const ManageCategory = () => {
             
             <table className='table'>
               <tr>
-              <th>Name</th>
-              <th>Created At</th>
-              <th>Updated At</th>
-              <th>Update </th>
-              <th>Delete </th>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Update </th>
+                <th>Delete </th>
               </tr>
            
                 {category.map((c,i) => {
@@ -73,6 +91,8 @@ const ManageCategory = () => {
                 return(  
 
                     <tr key={i}>
+
+                      <td><LazyLoadImage src = {`${API}/category/photo/${c._id}`} width="70px" className='img-thumbnail' /></td>
 
                       <td>{c.name}</td>
 
@@ -105,15 +125,15 @@ const ManageCategory = () => {
     return(
         
 
-            <Layout  className='container-fluid'>
+            <Layout  className='container'>
 
-              <div className='row justify-content-center'>
+              <div className='row'>
 
                   <div className='col-3'>
                       {adminLinks()}
                   </div>
 
-                  <div className='col-7'>
+                  <div className='col-9'>
 
                       {categoryList()}
                       
